@@ -13,10 +13,10 @@
 
     ```bash
     # test connectivity within dev namespace
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep HTTP'
 
     # test connectivity within default namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep HTTP'
 
     kubectl exec -it $(kubectl get po -l app=frontend -ojsonpath='{.items[0].metadata.name}') -c server -- sh -c 'nc -zv productcatalogservice 3550'
     ```
@@ -25,20 +25,20 @@
 
     ```bash
     # test connectivity from dev namespace to default namespace
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to dev namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep HTTP'
     ```
 
     c. Test connectivity from each namespace to the Internet.
 
     ```bash
     # test connectivity from dev namespace to the Internet
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main-- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main-- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep HTTP'
     ```
 
 
@@ -73,30 +73,30 @@
 
     ```bash
     # test connectivity within dev namespace
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://nginx-svc 2>/dev/null | grep HTTP'
 
     # test connectivity within default namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI frontend 2>/dev/null | grep HTTP'
     ```
 
     b. The connections across `dev` and `default` namespaces should be blocked `with exit code 1` by the global `default-deny` policy.
 
     ```bash
     # test connectivity from dev namespace to default namespace
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to dev namespace
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI http://nginx-svc.dev 2>/dev/null | grep HTTP'
     ```
 
     c. The connections to the Internet should be blocked `with exit code 1` by the configured policies.
 
     ```bash
     # test connectivity from dev namespace to the Internet
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep HTTP'
     ```
 
 
@@ -114,7 +114,7 @@
     b. Test connectivity between `dev/centos` pod and `default/frontend` service. The access should be allowed once the egress policy is in place.
 
     ```bash
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://frontend.default 2>/dev/null | grep HTTP'
     ```
 
     Output will be like this:
@@ -126,10 +126,10 @@
 
     ```bash
     # test connectivity from dev namespace to the Internet
-    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep -i http'
+    kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep -i http'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep HTTP'
     ```
    
 
