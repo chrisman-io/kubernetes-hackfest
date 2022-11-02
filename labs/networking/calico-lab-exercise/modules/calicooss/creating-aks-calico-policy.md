@@ -111,7 +111,7 @@
     1.22.11              1.22.15, 1.23.8, 1.23.12
     ```
     
-    For this lab we'll use 1.23.12
+    For this lab we will use 1.23.12 kubernetes version.
     
     ```bash
     K8SVERSION=1.23.12
@@ -138,7 +138,7 @@
     ```bash
     az aks list -g $RGNAME --out table
     ```
-    
+
     Output is:
     ```bash
     Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
