@@ -84,16 +84,16 @@
     
     ```bash
     # Windows images are large and can take some time to start, run a watch and wait for the pods to be in running state
-    kubectl get pods -n calico-demo -w
+    watch kubectl get pods -n calico-demo
     ```
 
     ```bash
     ### The output is like when ready:
     NAME      READY   STATUS    RESTARTS   AGE
-    busybox   1/1     Running   0          5m30s
-    nginx     1/1     Running   0          5m30s
-    porter    1/1     Running   0          4m50s
-    pwsh      1/1     Running   0          5m1s
+    busybox   1/1     Running   0          58s
+    nginx     1/1     Running   0          58s
+    porter    1/1     Running   0          58s
+    pwsh      1/1     Running   0          58s
     ```
 
 5. Check the connectivities between pods. Expected Outcome:  
@@ -105,19 +105,9 @@
 
    ```bash
    kubectl exec -n calico-demo busybox -- nc -vz $(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') 80
-
-   sleep 10
-
    kubectl exec -n calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po nginx -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
-
-   sleep 10
-
    kubectl exec -n calico-demo busybox -- nc -vz $(kubectl get po nginx -n calico-demo -o 'jsonpath={.status.podIP}') 80
-
-   sleep 10
-
    kubectl exec -n calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
-
    ```
   
    The output will be like:
