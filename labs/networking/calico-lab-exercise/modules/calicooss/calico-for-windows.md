@@ -67,11 +67,11 @@
 
    ```bash
    ### The output is like:
-   NAME                                STATUS   ROLES   AGE     VERSION
-   aks-nodepool1-40984214-vmss000000   Ready    agent   48m     v1.22.4
-   aks-nodepool1-40984214-vmss000001   Ready    agent   48m     v1.22.4
-   aks-nodepool1-40984214-vmss000002   Ready    agent   47m     v1.22.4
-   aksnpwin000000                      Ready    agent   3m16s   v1.22.4
+   NAME                                STATUS   ROLES   AGE   VERSION
+   aks-nodepool1-17497551-vmss000000   Ready    agent   80m   v1.23.12
+   aks-nodepool1-17497551-vmss000001   Ready    agent   80m   v1.23.12
+   aks-nodepool1-17497551-vmss000002   Ready    agent   80m   v1.23.12
+   aksnpwin000000                      Ready    agent   25s   v1.23.12
    ```
 
 4. Create demo pods in Linux and Windows nodes. Expected Outcome:
