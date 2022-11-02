@@ -172,8 +172,32 @@
 	```bash
 	kubectl cluster-info
 	```
+
+7. Verify the settings
+   
+   ```bash
+   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query 'networkProfile' --out table
+   ```
+
+   You should see "networkPlugin": "azure" and "networkPolicy": "calico".
+
+8. Verify the transparent mode by running the following command in one node
+
+   ```bash
+   az vmss run-command invoke \
+     -g $(az vmss list --output table | grep -i $RGNAME | awk '{print $2}') \
+     -n $(az vmss list --output table | grep -i $RGNAME | awk '{print $1}') \
+    --scripts "cat /etc/cni/net.d/*" \
+    --command-id RunShellScript \
+    --instance-id 0 \
+    --query 'value[0].message' \
+    --output tsv | grep mode
+   ```
+   
+   > output should contain "mode": "transparent"
+
 	
-7.  Install `calicoctl` CLI for use in later labs. The following guide is based upon the doc from [Install Calicoctl](https://projectcalico.docs.tigera.io/maintenance/clis/calicoctl/install) 
+9.  Install `calicoctl` CLI for use in later labs. The following guide is based upon the doc from [Install Calicoctl](https://projectcalico.docs.tigera.io/maintenance/clis/calicoctl/install) 
 
     a) Cloud shell(Linux amd64)
  
