@@ -206,7 +206,9 @@
     # download and configure calicoctl
     curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-amd64 -o calicoctl
     chmod +x ./calicoctl
-    
+    ```
+
+    ```bash
     # verify calicoctl is running 
     ./calicoctl version
 
