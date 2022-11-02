@@ -103,21 +103,19 @@
     ```bash
     KubernetesVersion    Upgrades
     -------------------  ------------------------
-    1.22.4               None available
-    1.22.2               1.22.4
-    1.21.7               1.22.2, 1.22.4
-    1.21.2               1.21.7, 1.22.2, 1.22.4
-    1.20.13              1.21.2, 1.21.7
-    1.20.9               1.20.13, 1.21.2, 1.21.7
-    1.19.13              1.20.9, 1.20.13
-    1.19.11              1.19.13, 1.20.9, 1.20.13
+    1.24.6               None available
+    1.24.3               1.24.6
+    1.23.12              1.24.3, 1.24.6
+    1.23.8               1.23.12, 1.24.3, 1.24.6
+    1.22.15              1.23.8, 1.23.12
+    1.22.11              1.22.15, 1.23.8, 1.23.12
     ```
     
-    For this lab we'll use 1.22.4
+    For this lab we'll use 1.23.12
     
     ```bash
-    K8SVERSION=1.22.4
-    echo export K8SVERSION=1.22.4 >> ~/.bashrc
+    K8SVERSION=1.23.12
+    echo export K8SVERSION=1.23.12 >> ~/workshopvars-calioss.env
     ```
 
     
@@ -138,8 +136,9 @@
 4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
-    az aks list -o table -g $RGNAME
+    az aks list -g $RGNAME --out table
     ```
+    
     Output is:
     ```bash
     Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
