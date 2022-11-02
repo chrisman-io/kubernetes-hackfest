@@ -140,7 +140,7 @@
     ```
 
     Wait until the `ProvisioningState` value becames `Succeeded`:
-    
+
     ```bash
     Name                Location    ResourceGroup      KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
     ------------------  ----------  -----------------  -------------------  --------------------------  -------------------  ----------------------------------------------------------------
@@ -163,10 +163,10 @@
     
     Output is:
 	```bash
-	NAME                                STATUS   ROLES   AGE    VERSION
-	aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.22.4
-	aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.22.4
-	aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.22.4
+    NAME                                STATUS   ROLES   AGE   VERSION
+    aks-nodepool1-17497551-vmss000000   Ready    agent   27m   v1.23.12
+    aks-nodepool1-17497551-vmss000001   Ready    agent   27m   v1.23.12
+    aks-nodepool1-17497551-vmss000002   Ready    agent   26m   v1.23.12
 	```
 
 	To see more details about your cluster:
