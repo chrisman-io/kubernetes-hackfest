@@ -177,7 +177,7 @@
 7. Verify the settings
    
    ```bash
-   az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query 'networkProfile' --out table
+   az aks show --resource-group $RGNAME --name $OSSCLUSTERNAME --query 'networkProfile' --out table
    ```
 
    You should see "networkPlugin": "azure" and "networkPolicy": "calico".
