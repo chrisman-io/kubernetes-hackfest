@@ -233,7 +233,7 @@
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.23.4/calicoctl-linux-arm64 -o calicoctl
+    curl -L curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-arm64 -o calicoctl
 
 
     chmod +x calicoctl
@@ -247,7 +247,7 @@
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
     ```bash    
     # download and configure calicoctl
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.23.4/calicoctl-darwin-amd64 -o calicoctl
+    curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-darwin-amd64 -o calicoctl
 
     chmod +x calicoctl
     
@@ -261,11 +261,8 @@
     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
     
     ```pwsh
-    Invoke-WebRequest -Uri "https://github.com/projectcalico/calico/releases/download/v3.23.4/calicoctl-windows-amd64.exe -OutFile "calicoctl.exe" 
+    Invoke-WebRequest -Uri "https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-windows-amd64.exe -OutFile "kubectl-calico.exe" 
     ```
-    
-    
-
 
 --- 
 ## Next steps
