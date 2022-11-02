@@ -216,15 +216,16 @@
 
     Output is:
     ```bash
-    Client Version:    v3.22.0
-    Git commit:        a86e41d02
-    Cluster Version:   v3.21.4
+    Client Version:    v3.24.3
+    Git commit:        d833a9e38
+    Cluster Version:   v3.21.6
     Cluster Type:      typha,kdd,k8s,operator,aks
     ```
      
     ```bash 
     # save and alias calicoctl for future usage.
-    alias calicoctl=$(pwd)/calicoctl
+    alias calicoctl=~/calicoctl
+    echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
     ```
 
     b) Linux arm64
