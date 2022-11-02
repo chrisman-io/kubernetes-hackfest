@@ -22,8 +22,8 @@
     kubectl apply -f https://raw.githubusercontent.com/googlecloudplatform/microservices-demo/v0.3.8/release/kubernetes-manifests.yaml
     ```
     
+    Confirm if the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods will look as follows: 
     ```bash
-    #confirm the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods will look as follows: 
     kubectl get pods -A -w | grep -e 'default\|dev'
     ```
 
