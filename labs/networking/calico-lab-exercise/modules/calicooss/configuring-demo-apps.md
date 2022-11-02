@@ -4,11 +4,9 @@
 
 ## Steps
 
-1. Download this repo and browse to this lab environment:
+1. Change the directory to this lab environment:
 
     ```bash
-    git clone https://github.com/Azure/kubernetes-hackfest.git
- 
     cd kubernetes-hackfest/labs/networking/calico-lab-exercise/
     ```
 
