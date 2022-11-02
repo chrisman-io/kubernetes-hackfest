@@ -77,12 +77,12 @@
    # Persist for Later Sessions in Case of Timeout
    echo export LOCATION=eastus >> ~/workshopvars-calioss.env
    # Create Resource Group
-   az group create -n $RGNAME -l $LOCATION
+   az group create -n $RGNAME -l $LOCATION --out table
    ```
     
 3.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
     
-    Use Unique CLUSTERNAME
+    Use Unique CLUSTERNAME 
     
     ```bash
     # Set AKS Cluster Name
