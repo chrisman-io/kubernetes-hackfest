@@ -38,7 +38,7 @@
     kubectl -n dev exec -t centos -- sh -c 'curl -m3 -sI http://www.bing.com 2>/dev/null | grep HTTP'
 
     # test connectivity from default namespace to the Internet
-    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main-- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep HTTP'
+    kubectl exec -it $(kubectl get po -l app=loadgenerator -ojsonpath='{.items[0].metadata.name}') -c main -- sh -c 'curl -m3 -sI www.bing.com 2>/dev/null | grep HTTP'
     ```
 
 
