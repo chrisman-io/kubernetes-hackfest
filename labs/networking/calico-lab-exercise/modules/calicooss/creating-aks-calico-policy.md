@@ -192,7 +192,7 @@
     --command-id RunShellScript \
     --instance-id 0 \
     --query 'value[0].message' \
-    --output tsv | grep mode
+    --output tsv
    ```
    
    > output should contain "mode": "transparent"
@@ -204,7 +204,7 @@
  
     ```bash    
     # download and configure calicoctl
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.23.4/calicoctl-linux-amd64 -o calicoctl
+    curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-amd64 -o calicoctl
     chmod +x ./calicoctl
     
     # verify calicoctl is running 
