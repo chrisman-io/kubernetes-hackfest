@@ -112,13 +112,12 @@
   
    The output will be like:
    ```bash
-   ##nc command output
-   10.240.0.115 (10.240.0.115:80) open
-
-   ##powershell command output
+   10.224.0.121 (10.224.0.121:80) open
    StatusCode        : 200
    StatusDescription : OK
-   
+   10.224.0.65 (10.224.0.65:80) open
+   StatusCode        : 200
+   StatusDescription : OK
    ```
 
 6. Create policy to explicitly allow the `busybox` pod in Linux node to reach the `porter` pod in Windows node, and deny the `powershell` pod in Windows node to reach the `nginx` pod in Linux node
