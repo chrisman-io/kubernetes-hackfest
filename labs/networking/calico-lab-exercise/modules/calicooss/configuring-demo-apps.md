@@ -23,35 +23,28 @@
     ```
     
     ```bash
-    #confirm the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods in the default namespace will look as follows: 
-    kubectl get pods
-    sleep 10
-    kubectl get pods -n dev
+    #confirm the pod/deployments are running. Note the loadgenerator pod waits for the frontend pod to respond to http calls before coming up and can take a few minutes. Eventually, the status of the pods will look as follows: 
+    kubectl get pods -A -w | grep -e 'default\|dev'
     ```
 
     Output will be similar as below:
     ```bash
-
-    NAME                                     READY   STATUS    RESTARTS   AGE
-    adservice-7cbc9bd9-jkjhq                 1/1     Running   0          86s
-    cartservice-d7db78c66-4rw8p              1/1     Running   0          87s
-    checkoutservice-784bfc794f-7np5p         1/1     Running   0          87s
-    currencyservice-5898885559-74s5z         1/1     Running   0          86s
-    emailservice-6bd8b47657-s4drk            1/1     Running   0          87s
-    frontend-764c5c755f-8xjcs                1/1     Running   0          87s
-    loadgenerator-84cbcd768c-6tcx5           1/1     Running   0          87s
-    paymentservice-6c676df669-m5j6g          1/1     Running   0          87s
-    productcatalogservice-7fcf4f8cc-nkvnd    1/1     Running   0          87s
-    recommendationservice-79f5f4bbf5-qgqfv   1/1     Running   0          87s
-    redis-cart-74594bd569-l4kt9              1/1     Running   0          86s
-    shippingservice-b5879cdbf-r8xqb          1/1     Running   0          86s
-
-
-    NAME                         READY   STATUS    RESTARTS   AGE
-    centos                       1/1     Running   0          48s
-    dev-nginx-754f647b8b-99fsn   1/1     Running   0          48s
-    dev-nginx-754f647b8b-hlrw8   1/1     Running   0          48s
-    netshoot                     1/1     Running   0          48s
+    default           adservice-77d5cd745d-8d5f6                1/1     Running   0          7m38s
+    default           cartservice-74f56fd4b-nttdn               1/1     Running   0          7m39s
+    default           checkoutservice-69c8ff664b-hd8nt          1/1     Running   0          7m39s
+    default           currencyservice-77654bbbdd-m96s8          1/1     Running   0          7m39s
+    default           emailservice-54c7c5d9d-r9hb4              1/1     Running   0          7m39s
+    default           frontend-99684f7f8-v5q4h                  1/1     Running   0          7m39s
+    default           loadgenerator-555fbdc87d-mj4qx            1/1     Running   0          7m39s
+    default           paymentservice-bbcbdc6b6-vcx2w            1/1     Running   0          7m39s
+    default           productcatalogservice-68765d49b6-gghbr    1/1     Running   0          7m39s
+    default           recommendationservice-5f8c456796-b9v7v    1/1     Running   0          7m39s
+    default           redis-cart-78746d49dc-j62kq               1/1     Running   0          7m38s
+    default           shippingservice-5bd985c46d-f5b8n          1/1     Running   0          7m39s
+    dev               centos                                    1/1     Running   0          7m40s
+    dev               dev-nginx-76c7dcb7b-h79hs                 1/1     Running   0          7m40s
+    dev               dev-nginx-76c7dcb7b-ttk89                 1/1     Running   0          7m40s
+    dev               netshoot                                  1/1     Running   0          7m40s
     ```
 
 
