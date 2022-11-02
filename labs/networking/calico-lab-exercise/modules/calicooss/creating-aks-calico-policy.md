@@ -136,15 +136,14 @@
 4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
-    az aks list -g $RGNAME --out table
+    watch az aks list -g $RGNAME --out table
     ```
 
     Output is:
     ```bash
-    Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
-    -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------
-    aksjessie2081  eastus      aks-rg-jessie2081  1.22.4               Succeeded             aksjessie2-aks-rg-jessie208-03cfb8-9713ae4f.hcp.eastus.azmk8s.io
-    
+    Name                Location    ResourceGroup      KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
+    ------------------  ----------  -----------------  -------------------  --------------------------  -------------------  ----------------------------------------------------------------
+    aks-oss-regis14807  eastus      aks-rg-regis14807  1.23.12              1.23.12                     Succeeded            aks-oss-re-aks-rg-regis1480-03cfb8-87eff8a8.hcp.eastus.azmk8s.io
     ```
     
 5.  Get the Kubernetes config files for your new AKS cluster
