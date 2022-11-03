@@ -157,6 +157,8 @@
    ```text
    20.124.135.197 - - [03/Nov/2022 00:54:52] "HEAD / HTTP/1.1" 200 -
    20.124.135.197 - - [03/Nov/2022 00:54:59] "HEAD / HTTP/1.1" 200 -
+   173.34.146.163 - - [03/Nov/2022 00:58:47] "GET / HTTP/1.1" 200 -
+   173.34.146.163 - - [03/Nov/2022 00:58:47] "GET /favicon.ico HTTP/1.1" 404 -
    ```
 
 ## <Option> - Reverse to standard Linux dataplane from eBPF dataplane 
