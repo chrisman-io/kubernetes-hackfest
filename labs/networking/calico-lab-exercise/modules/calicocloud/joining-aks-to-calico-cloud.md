@@ -57,7 +57,11 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
    ```
    Joining the cluster to Calico Cloud can take a few minutes. Meanwhile the Calico resources can be monitored until they are all reporting `Available` as `True`
    ```bash
-   kubectl get tigerastatus -w                                                                                                                   
+   watch kubectl get tigerastatus
+   ```
+   
+   The output will be as below, when the cluster is connected:
+   ```bash
    NAME                            AVAILABLE   PROGRESSING   DEGRADED   SINCE
    apiserver                       True        False         False      96s
    calico                          True        False         False      16s
