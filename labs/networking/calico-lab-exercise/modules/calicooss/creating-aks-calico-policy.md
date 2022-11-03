@@ -80,7 +80,7 @@
    az group create -n $RGNAME -l $LOCATION --out table
    ```
     
-3.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
+8.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
     
     Use Unique CLUSTERNAME 
     
@@ -133,7 +133,7 @@
     
     ```
     
-4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
+9.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
     watch az aks list -g $RGNAME --out table
@@ -147,122 +147,122 @@
     aks-oss-regis14807  eastus      aks-rg-regis14807  1.23.12              1.23.12                     Succeeded            aks-oss-re-aks-rg-regis1480-03cfb8-87eff8a8.hcp.eastus.azmk8s.io
     ```
     
-5.  Get the Kubernetes config files for your new AKS cluster
+10.  Get the Kubernetes config files for your new AKS cluster
     
-    ```bash
-    az aks get-credentials -n $OSSCLUSTERNAME -g $RGNAME
-    ```
+     ```bash
+     az aks get-credentials -n $OSSCLUSTERNAME -g $RGNAME
+     ```
     
-6.  Verify you have API access to your new AKS cluster
+11.  Verify you have API access to your new AKS cluster
     
-    > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready when the output is similar to the following:
-    
-	```bash
-	kubectl get nodes
-	```
-    
-    Output is:
-	```bash
-    NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-17497551-vmss000000   Ready    agent   27m   v1.23.12
-    aks-nodepool1-17497551-vmss000001   Ready    agent   27m   v1.23.12
-    aks-nodepool1-17497551-vmss000002   Ready    agent   26m   v1.23.12
-	```
-
-	To see more details about your cluster:
-	```bash
-	kubectl cluster-info
-	```
-
-7. Verify the settings
-   
-   ```bash
-   az aks show --resource-group $RGNAME --name $OSSCLUSTERNAME --query 'networkProfile'
-   ```
-
-   > You should see "networkPlugin": "azure" and "networkPolicy": "calico".
-
-8. Verify the transparent mode by running the following command in one node
-
-   ```bash
-   az vmss run-command invoke \
-     -g $(az vmss list --output table | grep -i $RGNAME | awk '{print $2}') \
-     -n $(az vmss list --output table | grep -i $RGNAME | awk '{print $1}') \
-    --scripts "cat /etc/cni/net.d/*" \
-    --command-id RunShellScript \
-    --instance-id 0 \
-    --query 'value[0].message' \
-    --output tsv
-   ```
-   
-   > output should contain "mode": "transparent"
-
-	
-9.  Install `calicoctl` CLI for use in later labs. The following guide is based upon the doc from [Install Calicoctl](https://projectcalico.docs.tigera.io/maintenance/clis/calicoctl/install) 
-
-    a) Cloud shell(Linux amd64)
- 
-    ```bash    
-    # download and configure calicoctl
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-amd64 -o calicoctl
-    chmod +x ./calicoctl
-    ```
-
-    ```bash
-    # verify calicoctl is running 
-    ./calicoctl version
-
-    ```
-
-    Output is:
-    ```bash
-    Client Version:    v3.24.3
-    Git commit:        d833a9e38
-    Cluster Version:   v3.21.6
-    Cluster Type:      typha,kdd,k8s,operator,aks
-    ```
+     > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready  when the output is similar to the following:
      
-    ```bash 
-    # save and alias calicoctl for future usage.
-    alias calicoctl=~/calicoctl
-    echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
+	 ```bash
+	 kubectl get nodes
+	 ```
+     
+     Output is:
+	 ```bash
+     NAME                                STATUS   ROLES   AGE   VERSION
+     aks-nodepool1-17497551-vmss000000   Ready    agent   27m   v1.23.12
+     aks-nodepool1-17497551-vmss000001   Ready    agent   27m   v1.23.12
+     aks-nodepool1-17497551-vmss000002   Ready    agent   26m   v1.23.12
+	 ```
+ 
+	 To see more details about your cluster:
+	 ```bash
+	 kubectl cluster-info
+	 ```
+
+12. Verify the settings
+   
+    ```bash
+    az aks show --resource-group $RGNAME --name $OSSCLUSTERNAME --query 'networkProfile'
     ```
 
-    b) Linux arm64
+    > You should see "networkPlugin": "azure" and "networkPolicy": "calico".
 
-    >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
-    ```bash    
-    # download and configure calicoctl
-    curl -L curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-arm64 -o calicoctl
+13. Verify the transparent mode by running the following command in one node
 
-
-    chmod +x calicoctl
-    
-    # verify calicoctl is running 
-    calicoctl version
+    ```bash
+    az vmss run-command invoke \
+      -g $(az vmss list --output table | grep -i $RGNAME | awk '{print $2}') \
+      -n $(az vmss list --output table | grep -i $RGNAME | awk '{print $1}') \
+     --scripts "cat /etc/cni/net.d/*" \
+     --command-id RunShellScript \
+     --instance-id 0 \
+     --query 'value[0].message' \
+     --output tsv
     ```
-
-    c) MacOS
     
-    >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
-    ```bash    
-    # download and configure calicoctl
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-darwin-amd64 -o calicoctl
+    > output should contain "mode": "transparent"
+ 
+	
+14.  Install `calicoctl` CLI for use in later labs. The following guide is based upon the doc from [Install Calicoctl](https://projectcalico.docs.tigera.io/maintenance/clis/calicoctl/install) 
 
-    chmod +x calicoctl
-    
-    # verify calicoctl is running 
-    calicoctl version
-    ```
-    Note: If you are faced with `cannot be opened because the developer cannot be verified` error when using `calicoctl` for the first time. go to `Applicaitons` \> `System Prefences` \> `Security & Privacy` in the `General` tab at the bottom of the window click `Allow anyway`.  
-
-
-    d) Windows - using powershell command to download the calicoctl binary  
-    >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
-    
-    ```pwsh
-    Invoke-WebRequest -Uri "https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-windows-amd64.exe -OutFile "kubectl-calico.exe" 
-    ```
+     a) Cloud shell(Linux amd64)
+  
+     ```bash    
+     # download and configure calicoctl
+     curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-amd64 -o calicoctl
+     chmod +x ./calicoctl
+     ```
+ 
+     ```bash
+     # verify calicoctl is running 
+     ./calicoctl version
+ 
+     ```
+ 
+     Output is:
+     ```bash
+     Client Version:    v3.24.3
+     Git commit:        d833a9e38
+     Cluster Version:   v3.21.6
+     Cluster Type:      typha,kdd,k8s,operator,aks
+     ```
+      
+     ```bash 
+     # save and alias calicoctl for future usage.
+     alias calicoctl=~/calicoctl
+     echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
+     ```
+ 
+     b) Linux arm64
+ 
+     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
+     ```bash    
+     # download and configure calicoctl
+     curl -L curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-arm64 -o calicoctl
+ 
+ 
+     chmod +x calicoctl
+     
+     # verify calicoctl is running 
+     calicoctl version
+     ```
+ 
+     c) MacOS
+     
+     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
+     ```bash    
+     # download and configure calicoctl
+     curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-darwin-amd64 -o calicoctl
+ 
+     chmod +x calicoctl
+     
+     # verify calicoctl is running 
+     calicoctl version
+     ```
+     Note: If you are faced with `cannot be opened because the developer cannot be verified` error when using `calicoctl` for the first time. go to `Applicaitons` \>  `System Prefences` \> `Security & Privacy` in the `General` tab at the bottom of the window click `Allow anyway`.  
+ 
+ 
+     d) Windows - using powershell command to download the calicoctl binary  
+     >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
+     
+     ```pwsh
+     Invoke-WebRequest -Uri "https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-windows-amd64.exe -OutFile "kubectl-calico.exe" 
+     ```
 
 --- 
 ## Next steps
