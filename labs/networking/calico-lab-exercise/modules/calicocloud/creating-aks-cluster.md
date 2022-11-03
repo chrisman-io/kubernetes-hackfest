@@ -143,11 +143,10 @@ If you already have AKS cluster created make sure to verify it by running the In
     Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------
     aksjessie2081  eastus      aks-rg-jessie2081  1.22.4               Succeeded             aksjessie2-aks-rg-jessie208-03cfb8-9713ae4f.hcp.eastus.azmk8s.io
-    
     ```
     
     
-10.  Get the Kubernetes config files for your new AKS cluster
+10. Get the Kubernetes config files for your new AKS cluster
     
     ```bash
     az aks get-credentials -n $CLUSTERNAME -g $RGNAME
