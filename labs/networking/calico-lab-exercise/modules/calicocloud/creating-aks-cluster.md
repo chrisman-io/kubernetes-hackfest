@@ -1,8 +1,6 @@
 # Module 0: Creating AKS cluster
 
-The following guide is based upon the repos from [lastcoolnameleft](https://github.com/lastcoolnameleft/kubernetes-workshop/blob/master/create-aks-cluster.md) and [Azure Kubernetes Hackfest](https://github.com/Azure/kubernetes-hackfest/tree/master/labs/create-aks-cluster#readme).
-
-* * *
+---
 
 **Goal:** Create AKS cluster.
 
@@ -12,9 +10,25 @@ If you already have AKS cluster created from AKS network policies, make sure the
 
 ## Prerequisite Tasks
 
-Follow the prequisite steps if you need to verify your Azure subscription.
+- Azure Account
 
-- Ensure you are using the correct Azure subscription you want to deploy AKS to.
+1. Login to Azure Portal at http://portal.azure.com.
+
+2. Open the Azure Cloud Shell and choose Bash Shell (do not choose Powershell)
+
+   ![img-cloud-shell](https://user-images.githubusercontent.com/104035488/199605731-86d9f1c5-d3a6-40fb-8e95-3a9bf837c84b.png)
+
+3. The first time Cloud Shell is started will require you to create a storage account.
+
+4. Once your cloud shell is started, clone the workshop repo into the cloud shell environment
+
+   ```bash
+   git clone https://github.com/Azure/kubernetes-hackfest
+   ```
+
+   > Note: In the cloud shell, you are automatically logged into your Azure subscription.
+
+5. Ensure you are using the correct Azure subscription you want to deploy AKS to.
     
 	```bash
 	# View subscriptions
@@ -31,14 +45,15 @@ Follow the prequisite steps if you need to verify your Azure subscription.
     # Verify correct subscription is now set
     az account show
     ```
+
+6.  Create a unique identifier suffix for resources to be created in this lab.
     
+    > *NOTE:* In the following sections we'll be generating and setting some environment variables. If you're terminal session restarts you may need to reset these variables. You can use that via the following command:
+    >
+    >source ~/workshopvars-calicloud.env
 
-
-## Steps
-
-1.  Create a unique identifier suffix for resources to be created in this lab.
-    
 	```bash
+    echo "# Start AKS Hackfest Calico OSS Lab Params" >> ~/workshopvars-calicloud.env
     UNIQUE_SUFFIX=$USER$RANDOM
     # Remove Underscores and Dashes (Not Allowed in AKS and ACR Names)
     UNIQUE_SUFFIX="${UNIQUE_SUFFIX//_}"
@@ -46,22 +61,20 @@ Follow the prequisite steps if you need to verify your Azure subscription.
     # Check Unique Suffix Value (Should be No Underscores or Dashes)
     echo $UNIQUE_SUFFIX
     # Persist for Later Sessions in Case of Timeout
-    echo export UNIQUE_SUFFIX=$UNIQUE_SUFFIX >> ~/.bashrc
+    echo export UNIQUE_SUFFIX=$UNIQUE_SUFFIX >> ~/workshopvars-calicloud.env
 	```
-    
-    **_ Note this value as it will be used in the next couple labs. _**
-	
-2. Create an Azure Resource Group in your chosen region. We will use East US in this example.
+
+7. Create an Azure Resource Group in your chosen region. We will use East US in this example.
 
    ```bash
    # Set Resource Group Name using the unique suffix
    RGNAME=aks-rg-$UNIQUE_SUFFIX
    # Persist for Later Sessions in Case of Timeout
-   echo export RGNAME=$RGNAME >> ~/.bashrc
+   echo export RGNAME=$RGNAME >> ~/workshopvars-calicloud.env
    # Set Region (Location)
    LOCATION=eastus
    # Persist for Later Sessions in Case of Timeout
-   echo export LOCATION=eastus >> ~/.bashrc
+   echo export LOCATION=eastus >> ~/workshopvars-calicloud.env
    # Create Resource Group
    az group create -n $RGNAME -l $LOCATION
    ```
@@ -76,7 +89,7 @@ Follow the prequisite steps if you need to verify your Azure subscription.
     # Look at AKS Cluster Name for Future Reference
     echo $CLUSTERNAME
     # Persist for Later Sessions in Case of Timeout
-    echo export CLUSTERNAME=aks${UNIQUE_SUFFIX} >> ~/.bashrc
+    echo export CLUSTERNAME=aks${UNIQUE_SUFFIX} >> ~/workshopvars-calicloud.env
     ```
     
     Get available kubernetes versions for the region. You will likely see more recent versions in your lab.
@@ -89,21 +102,20 @@ Follow the prequisite steps if you need to verify your Azure subscription.
     ```bash
     KubernetesVersion    Upgrades
     -------------------  ------------------------
-    1.22.4               None available
-    1.22.2               1.22.4
-    1.21.7               1.22.2, 1.22.4
-    1.21.2               1.21.7, 1.22.2, 1.22.4
-    1.20.13              1.21.2, 1.21.7
-    1.20.9               1.20.13, 1.21.2, 1.21.7
-    1.19.13              1.20.9, 1.20.13
-    1.19.11              1.19.13, 1.20.9, 1.20.13
+    1.24.6               None available
+    1.24.3               1.24.6
+    1.23.12              1.24.3, 1.24.6
+    1.23.8               1.23.12, 1.24.3, 1.24.6
+    1.22.15              1.23.8, 1.23.12
+    1.22.11              1.22.15, 1.23.8, 1.23.12
     ```
     
-    For this lab we'll use 1.22.4
-
+    For this lab we will use 1.23.12 kubernetes version.
+    
     ```bash
-    K8SVERSION=1.22.4
-    echo export K8SVERSION=1.22.4 >> ~/.bashrc
+    K8SVERSION=1.23.12
+    echo export K8SVERSION=1.23.12 >> ~/workshopvars-calicloud.env
+    ```
     ```
     
     > The below command can take 10-20 minutes to run as it is creating the AKS cluster. Please be PATIENT and grab a coffee/tea/kombucha...
@@ -122,9 +134,10 @@ Follow the prequisite steps if you need to verify your Azure subscription.
 4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
-    az aks list -o table -g $RGNAME
+    watch az aks list -o table -g $RGNAME
     ```
-    Output is:
+
+    Wait until the `ProvisioningState` value becames `Succeeded`:
     ```bash
     Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------
