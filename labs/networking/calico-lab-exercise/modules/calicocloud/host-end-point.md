@@ -22,7 +22,7 @@
    
    ```bash
    #You should be able ssh to your vm with public IP
-   ssh -i /.ssh/id_rsa azureuser@$VM_IP
+   ssh -i ~/.ssh/id_rsa azureuser@$VM_IP
    ```
    ```bash
    #Exit the VM, returning to the Cloud Shell prompt
@@ -97,7 +97,11 @@
 
    ssh to your vm from local shell and test the NodePort `30080`, the expecting result would be 'Connection to 10.240.0.4 30080 port [tcp/*] succeeded!'
    ```bash
-   ssh -i /.ssh/id_rsa azureuser@$VM_IP
+   ssh -i ~/.ssh/id_rsa -t azureuser@$VM_IP NODE_IP1=$NODE_IP1 NODE_IP2=$NODE_IP2 bash -l
+   ```
+   
+   Inside the VM, execute:
+   ```bash
    sudo apt-get install netcat
    nc -zv $NODE_IP1 30080
    nc -zv $NODE_IP2 30080
