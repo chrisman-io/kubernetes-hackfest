@@ -95,19 +95,19 @@
    kubectl apply -f demo/ebpf/configmap.yaml
    ```
 
-4. Sometimes Kubernetes is slow to propagate ConfigMaps (see Kubernetes issue #30189)). To expedite the process you can restart the operator.
+   Sometimes Kubernetes is slow to propagate ConfigMaps (see Kubernetes issue #30189)). To expedite the process you can restart the operator.
 
    ```bash
    kubectl delete pods -n calico-system --all
    ```
 
    Verify all pods restart successfully
-   
+
    ```bash
    kubectl get pods -n calico-system 
    ```
 
-5. Replace kube-proxy 
+4. Replace kube-proxy 
    > In eBPF mode, Calico replaces kube-proxy so it wastes resources to run both. To disable kube-proxy reversibly, we recommend adding a node selector to kube-proxy’s DaemonSet that matches no nodes. By doing so, we’re telling kube-proxy not to run on any nodes (because they’re all running Calico):
    
 
@@ -120,14 +120,14 @@
    kubectl get pods -n kube-system
    ```
 
-6. Enable eBPF mode
+5. Enable eBPF mode
    > To enable eBPF mode, change the spec.calicoNetwork.linuxDataplane parameter in the operator’s Installation resource to "BPF"; you must also clear the hostPorts setting because host ports are not supported in BPF mode.
 
    ```bash
    kubectl patch installation.operator.tigera.io default --type merge -p '{"spec":{"calicoNetwork":{"linuxDataplane":"BPF", "hostPorts":null}}}'
    ```
 
-7. Restart kube-dns and yaobank pod.
+6. Restart kube-dns and yaobank pod.
 
    > When the dataplane changes, it disrupts any existing connections, and as a result it’s a good idea to replace the pods that are running. In our specific case, deleting the kube-dns pods will ensure that connectivity for these pods is running fully on the eBPF dataplane, as these pods are integral to Kubernetes functionality.
 
@@ -136,7 +136,7 @@
    kubectl delete pods -n yaobank --all
    ```
 
-8. Curl the `yaobank-customer` service again and confirm the public IP address of cloudshell or your local shell show up as source IP in pod logs, rather than the node IP which we saw via kube-proxy. 
+7. Curl the `yaobank-customer` service again and confirm the public IP address of cloudshell or your local shell show up as source IP in pod logs, rather than the node IP which we saw via kube-proxy. 
 
    ```bash
    #Curl the svc ip from your cloud shell/local shell or open in your browser to generate logs.
