@@ -189,7 +189,7 @@
    
    ```bash
    #restart tigera-operator
-   kubectl rollout restart deployment tigera-operator -n tigera-operator
+   kubectl delete pods -n calico-system --all
    ```
 
    ```bash
