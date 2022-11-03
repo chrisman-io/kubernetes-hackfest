@@ -79,35 +79,20 @@
 3. Configure Calico to connect directly to the API server. 
 
    ```bash
-   ##Extract API server address
-   kubectl cluster-info | grep Kubernetes
+   ##Export the API server address to a environment variable.
+   APISERVERHOST=$(kubectl cluster-info | grep Kubernetes | awk '{print $NF}' | awk -F ':' '{print $2}')
+   APISERVERHOST="${APISERVERHOST///}"
    ```
 
-   > Output is similar:
+   Replace the APISERVERHOST value in the configmap file for calico-node to know how to contact Kubernetes API server.
 
    ```bash
-   # "aks-oss-je-aks-rg-xxxxxxxyyyyyyzzzzzz.hcp.eastus.azmk8s.io" is your api server host
-   Kubernetes control plane is running at https://aks-oss-je-aks-rg-xxxxxxxyyyyyyzzzzzz.hcp.eastus.azmk8s.io:443
-   ```
-
-   Create configmap for calico-node to know how to contact Kubernetes API server.
-   ```bash
-   ##use above server host to create configmap. 
-   cat > cm.yaml <<EOF
-   kind: ConfigMap
-   apiVersion: v1
-   metadata:
-     name: kubernetes-services-endpoint
-     namespace: tigera-operator
-   data:
-     KUBERNETES_SERVICE_HOST: "<API server host>"  
-     KUBERNETES_SERVICE_PORT: "443"
-   EOF
+   sed -i 's,APISERVERHOST,'"$APISERVERHOST"',' demo/ebpf/configmap.yaml
    ```
 
    ```bash
    #edit the cm yaml file by replacing the API server host address before apply it 
-   kubectl apply -f cm.yaml
+   kubectl apply -f demo/ebpf/configmap.yaml
    ```
 
    ```bash
