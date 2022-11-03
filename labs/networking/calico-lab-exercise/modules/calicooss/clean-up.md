@@ -11,3 +11,11 @@
     ```bash
     az group delete --resource-group $RGNAME
     ```
+
+3. Delete the workshopvars-calioss.env file.
+
+   ```bash
+   rm workshopvars-calioss.env
+   ```
+
+[Next -> Chapter 2-Module 0](../calicocloud/creating-aks-cluster.md)
