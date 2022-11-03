@@ -28,11 +28,11 @@
     
     Output will be
     ```bash
-    NAME                                STATUS   ROLES   AGE   VERSION
-    aks-nodepool1-40984214-vmss000000   Ready    agent   68m   v1.22.4
-    aks-nodepool1-40984214-vmss000001   Ready    agent   68m   v1.22.4
-    aks-nodepool1-40984214-vmss000002   Ready    agent   67m   v1.22.4
-    aksnpwin000000                      Ready    agent   23m   v1.22.4
+    NAME                                STATUS   ROLES   AGE    VERSION
+    aks-nodepool1-17497551-vmss000000   Ready    agent   107m   v1.23.12
+    aks-nodepool1-17497551-vmss000001   Ready    agent   107m   v1.23.12
+    aks-nodepool1-17497551-vmss000002   Ready    agent   107m   v1.23.12
+    aksnpwin000000                      Ready    agent   27m    v1.23.12
     ```
 
     ```bash
