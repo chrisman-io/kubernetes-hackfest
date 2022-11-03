@@ -78,7 +78,7 @@ If you already have AKS cluster created make sure to verify it by running the In
    # Persist for Later Sessions in Case of Timeout
    echo export LOCATION=eastus >> ~/workshopvars-calicloud.env
    # Create Resource Group
-   az group create -n $RGNAME -l $LOCATION
+   az group create -n $RGNAME -l $LOCATION --out table
    ```
     
 8.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
