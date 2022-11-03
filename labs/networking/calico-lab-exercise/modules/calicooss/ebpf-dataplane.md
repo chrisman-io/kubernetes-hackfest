@@ -142,7 +142,11 @@
    #Curl the svc ip from your cloud shell/local shell or open in your browser to generate logs.
    curl -m10 -sI $SVC_HOST 2>/dev/null | grep HTTP
    ```
-    
+   ```bash 
+   # use this ip to load in your browser:
+   echo $SVC_HOST 
+   ```
+   
    ```bash
    #check the source IP fromm pod log
    export CUSTOMER_POD=$(kubectl get pods -n yaobank -l app=customer -o name)
@@ -154,7 +158,6 @@
    20.124.135.197 - - [03/Nov/2022 00:54:52] "HEAD / HTTP/1.1" 200 -
    20.124.135.197 - - [03/Nov/2022 00:54:59] "HEAD / HTTP/1.1" 200 -
    ```
-
 
 ## <Option> - Reverse to standard Linux dataplane from eBPF dataplane 
 
