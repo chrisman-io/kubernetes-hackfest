@@ -139,13 +139,16 @@
     Test access from vm shell again, the expected result is 30080 Operation timed out
     ```bash
     ssh -i ~/.ssh/id_rsa -t azureuser@$VM_IP NODE_IP1=$NODE_IP1 NODE_IP2=$NODE_IP2 bash -l
-
+    ```
+    
+    ```bash
     # test access from vm shell to node1 (10.240.0.4), the expected result will be port 30080 (tcp) timed out
     nc -zv $NODE_IP1 30080 -w 10
 
     # test access from vm shell to node2 (10.240.0.35), the expected result will be 30080 port [tcp/*] succeeded!
     nc -zv $NODE_IP2 30080 -w 10
     ```
+    
     > Note that in order to control access to the NodePort service, you need to enable `preDNAT` and `applyOnForward` policy settings.
 
     ![hep policy](../img/hep-policy.png) 
