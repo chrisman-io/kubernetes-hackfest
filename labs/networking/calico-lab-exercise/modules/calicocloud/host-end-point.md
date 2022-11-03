@@ -24,6 +24,10 @@
    #You should be able ssh to your vm with public IP
    ssh -i /.ssh/id_rsa azureuser@$VM_IP
    ```
+   ```bash
+   #Exit the VM, returning to the Cloud Shell prompt
+   exit
+   ```
 
 2. Peer your vm vnet with aks cluster vnet. You can customize your vm by follow this [doc](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-connect-virtual-networks-cli)
 
