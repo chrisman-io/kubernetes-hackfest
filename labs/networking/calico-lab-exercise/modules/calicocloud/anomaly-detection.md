@@ -22,7 +22,7 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
     kubectl apply -f demo/90-anomaly-detection/ad-alerts.yaml
     ```
 
-2. Confirm the AD jobs are running before simulating anomaly behavior.
+2. Confirm if the anomaly detector is running before simulating an abnomal behavior.
 
     ```bash
     kubectl get globalalerts | grep -i tigera.io.detector 
@@ -31,7 +31,7 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
     The output should look similar to this:
 
     ```bash
-    tigera.io.detector.port-scan   2022-10-27T16:59:11Z
+    tigera.io.detector.port-scan   2022-11-03T13:05:05Z
     ```		
 
 3. Simulate a port scan anomaly by using an NMAP utility.
@@ -44,28 +44,16 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
 
     ```text
     # expected output
-    Starting Nmap 7.92 ( https://nmap.org ) at 2022-10-27 17:36 UTC
-    Nmap scan report for 10-224-0-67.nginx-svc.dev.svc.cluster.local (10.224.0.67)
-    Host is up (0.0010s latency).
-    Not shown: 899 closed tcp ports (reset)
-    PORT   STATE SERVICE
-    80/tcp open  http
-
-    Nmap done: 1 IP address (1 host up) scanned in 0.24 seconds
+    Starting Nmap 7.92 ( https://nmap.org ) at 2022-11-03 13:06 UTC
+    Nmap scan report for 10.224.0.85
+    Host is up.
+    All 600 scanned ports on 10.224.0.85 are in ignored states.
+    Not shown: 600 filtered tcp ports (no-response)
+    
+    Nmap done: 1 IP address (1 host up) scanned in 121.25 seconds
     ```
 
-4. Confirm the ad job is running before simulating anomaly behaviour
-    ```bash
-	kubectl get pods -n tigera-intrusion-detection
-	```
-    Output will be like:
-	```bash
-	NAME                                              READY   STATUS    RESTARTS   AGE
-    ad-jobs-deployment-86684f644c-xjht8               1/1     Running   0          19m
-    intrusion-detection-controller-6f5986ff6f-tg2zq   1/1     Running   0          47m
-    ```
-
-5. After a few minutes we can see the Alert generated in the Web UI
+4. After a few minutes we can see the Alert generated in the Web UI
 
 <img src="../img/anomaly-detection-alert.png" alt="Anomaly Detection Alert" width="100%"/>
 
