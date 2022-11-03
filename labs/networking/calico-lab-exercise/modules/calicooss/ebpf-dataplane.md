@@ -60,7 +60,7 @@
     ```bash
     SVC_HOST=$(kubectl -n yaobank get svc yaobank-customer -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
     #Curl the svc ip from your cloud shell/local shell or open in your browser to generate logs.
-    curl $SVC_HOST
+    curl -m3 $SVC_HOST
     ```
     
     ```bash
@@ -158,7 +158,7 @@
 
    ```bash
    #Curl the svc ip from your cloud shell/local shell or open in your browser to generate logs.
-   curl $SVC_HOST
+   curl -m3 $SVC_HOST
    ```
     
    ```bash
