@@ -89,5 +89,7 @@
     NODE_NAME=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="Hostname")].address}'| awk '{print $1;}')
     calicoctl --allow-version-mismatch get node $NODE_NAME -o yaml | grep wireguard
     ```
+    
+    The output will be null.
 
 [Next -> Module 5](../calicooss/ebpf-dataplane.md)
