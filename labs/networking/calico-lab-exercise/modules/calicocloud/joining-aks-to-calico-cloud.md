@@ -20,15 +20,19 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 3. Join AKS cluster to Calico Cloud management plane.
     
    Click the "Managed Cluster" in your left side of browser.
+
    ![managed-cluster](../img/managed-cluster.png)
    
    Click on "connect cluster"
+
    ![connect-cluster](../img/connect-cluster.png)
    
    Choose AKS and click next
+
    ![choose_aks](https://user-images.githubusercontent.com/104035488/199702972-36177641-0143-4669-9873-8272dbafafc0.png)
    
    Run installation script in your aks cluster, script should look similar to this
+   
    ![install-script](../img/script.png)
    
    > Output should look similar to:
