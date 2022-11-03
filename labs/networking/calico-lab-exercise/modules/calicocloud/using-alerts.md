@@ -19,10 +19,9 @@
     output will be like this:
     ```bash
     NAME                      CREATED AT
-    dns.unsanctioned.access   2021-06-10T03:24:41Z
-    network.lateral.access    2021-06-10T03:24:43Z
-    policy.globalnetworkset   2021-06-10T03:24:41Z
-        
+    dns.unsanctioned.access   2022-11-03T12:44:12Z
+    network.lateral.access    2022-11-03T12:44:13Z
+    policy.globalnetworkset   2022-11-03T12:44:12Z        
     ```
 
     Open `Alerts` view to see all triggered alerts in the cluster. Review the generated alerts.
