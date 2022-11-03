@@ -194,7 +194,7 @@
 
    ```bash
    #confirm calico-node restart again
-   kubectl get pods -n calico-system
+   watch kubectl get pods -n calico-system
    ```
 
 5. Confirm the source IP in yaobank-customer pod been reversed to node private IP.
