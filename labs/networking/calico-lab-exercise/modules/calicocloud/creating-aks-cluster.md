@@ -259,7 +259,6 @@ If you already have AKS cluster created make sure to verify it by running the In
     Invoke-WebRequest -Uri "https://downloads.tigera.io/ee/binaries/v3.14.2/calicoctl-windows-amd64.exe" -OutFile "calicocttl.exe"
     ```
 
-
 --- 
 ## Next steps
 
