@@ -6,7 +6,7 @@
 
 > This workshop uses AKS cluster with Linux containers. To create a Windows Server container on an AKS cluster, consider exploring [AKS documents](https://docs.microsoft.com/en-us/azure/aks/windows-container-cli). This cluster deployment utilizes Azure CLI v2.x from your local terminal or via Azure Cloud Shell. Instructions for installing Azure CLI can be found [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-If you already have AKS cluster created make sure to verify it running the Instructions number 12 and 13 below. If it comes out ok, then you can skip this module and go to [module 1](/modules/joining-aks-to-calico-cloud.md)
+If you already have AKS cluster created make sure to verify it by running the Instructions number 12 and 13 below. If it comes out ok, then you can skip this module and go to [module 1](/modules/joining-aks-to-calico-cloud.md)
 
 ## Prerequisite Tasks
 
