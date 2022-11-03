@@ -102,7 +102,7 @@
 
 4. The operator will pick up the change to the config map automatically and do a rolling update to pass on the change. Confirm that pods restart and then reach the Running state with the following command:
    ```bash
-   kubectl get pods -n calico-system -w
+   kubectl get pods -n calico-system
    ```
    > If you do not see the pods restart then it’s possible that the ConfigMap wasn’t picked up (sometimes Kubernetes is slow to propagate ConfigMaps (see Kubernetes issue #30189)). You can try restarting the operator.
    ```bash
