@@ -42,8 +42,8 @@
    
    ```bash
    #Create vnet1 to vnet2 peering and vnet2 to vnet1 peering 
-   az network vnet peering create -g $CLUSTER_RESOURCE_GROUP --name vnet1vnet2peer --vnet-name $VNET --remote-vnet-id $vNet2Id --allow-vnet-access
-   az network vnet peering create -g $RGNAME --name vnet2vnet1peer --vnet-name myVnet --remote-vnet-id $vNet1Id --allow-vnet-access
+   az network vnet peering create -g $CLUSTER_RESOURCE_GROUP --name vnet1vnet2peer --vnet-name $VNET --remote-vnet $vNet2Id --allow-vnet-access
+   az network vnet peering create -g $RGNAME --name vnet2vnet1peer --vnet-name myVnet --remote-vnet $vNet1Id --allow-vnet-access
    ```
 
    ```bash
