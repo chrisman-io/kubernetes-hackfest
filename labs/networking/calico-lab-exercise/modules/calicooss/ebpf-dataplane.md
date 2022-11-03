@@ -71,8 +71,9 @@
  
     > Output should be similar as below, the node private IP will show up as source IP. You see the node IP because the traffic is passed through kube-proxy rules, which will NAT the traffic to the node IP.
     ```text
-    10.240.0.35 - - [08/Nov/2021 21:49:42] "GET / HTTP/1.1" 200 -
-    10.240.0.4 - - [08/Nov/2021 21:51:25] "GET / HTTP/1.1" 200 -
+    10.224.0.4 - - [03/Nov/2022 00:22:51] "HEAD / HTTP/1.1" 200 -
+    10.224.0.62 - - [03/Nov/2022 00:22:57] "HEAD / HTTP/1.1" 200 -
+    10.224.0.33 - - [03/Nov/2022 00:23:03] "HEAD / HTTP/1.1" 200 -
     ```
 
 3. Configure Calico to connect directly to the API server. 
