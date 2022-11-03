@@ -205,7 +205,14 @@
    curl -m10 -sI $SVC_HOST 2>/dev/null | grep HTTP
    kubectl logs -n yaobank $CUSTOMER_POD
    ```
- 
+   
+   The expected output is that you start seeing the clusters IP addresses again.
+
+   ```bash
+   10.224.0.33 - - [03/Nov/2022 01:03:42] "HEAD / HTTP/1.1" 200 -
+   10.224.0.4 - - [03/Nov/2022 01:03:48] "GET / HTTP/1.1" 200 -
+   10.224.0.62 - - [03/Nov/2022 01:03:48] "GET /favicon.ico HTTP/1.1" 404 -
+   ```
 
 ## Conclusion
 
