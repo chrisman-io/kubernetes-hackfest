@@ -176,7 +176,7 @@ If you already have AKS cluster created make sure to verify it by running the In
     az aks show --resource-group $RGNAME --name $CLUSTERNAME --query 'networkProfile'
     ```
 
-    > You should see "networkPlugin": "azure" and it will not show the "networkPolicy" param.
+    > You should see "networkPlugin": "azure" and the "networkPolicy": null.
 
 13. Verify the transparent mode by running the following command in one node
 
