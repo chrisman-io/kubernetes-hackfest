@@ -37,7 +37,6 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
 3. Enable the AD job for the anomaly detection analysis.
 
     ```bash
-    sed -i 's,CLUSTERNAME,'"$CLUSTERNAME"',' demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
     kubectl apply -f demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
     ```
 
