@@ -140,9 +140,9 @@ If you already have AKS cluster created make sure to verify it by running the In
 
     Wait until the `ProvisioningState` value to became `Succeeded`:
     ```bash
-    Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
-    -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------
-    aksjessie2081  eastus      aks-rg-jessie2081  1.22.4               Succeeded             aksjessie2-aks-rg-jessie208-03cfb8-9713ae4f.hcp.eastus.azmk8s.io
+    Name            Location    ResourceGroup      KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
+    --------------  ----------  -----------------  -------------------  --------------------------  -------------------      ----------------------------------------------------------------
+    aks-regis30882  eastus      aks-rg-regis30882  1.23.12              1.23.12                     Succeeded            aks-regis3-aks-rg-regis3088-03cfb8-cc27b6fb.hcp.eastus.    azmk8s.io
     ```
     
     
