@@ -67,6 +67,22 @@
    wireguard.cali: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1340
    ```
 
+4. Disabling wireguard
 
+    ```bash
+    calicoctl --allow-version-mismatch patch felixconfiguration default --type='merge' -p '{"spec":{"wireguardEnabled":false}}'
+    ```
+    Output will be like this:
+    ```bash
+    Successfully patched 1 'FelixConfiguration' resource
+    ```
+    
+    Verify that the node has not the wireguard annotation anymore.
+
+    ```bash
+    ##NODE-NAME will be aks-nodepool1-40984214-vmss0000000 for example.
+    NODE_NAME=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="Hostname")].address}'| awk '{print $1;}')
+    calicoctl --allow-version-mismatch get node $NODE_NAME -o yaml | grep wireguard
+    ```
 
 [Next -> Module 5](../calicooss/ebpf-dataplane.md)
