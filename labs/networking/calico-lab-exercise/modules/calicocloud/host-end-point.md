@@ -70,9 +70,9 @@
 
    ```bash
    NAME                                         CREATED AT
-   aks-nodepool1-18852703-vmss000000-auto-hep   2022-02-11T01:46:39Z
-   aks-nodepool1-18852703-vmss000001-auto-hep   2022-02-11T01:46:39Z
-   aks-nodepool1-18852703-vmss000002-auto-hep   2022-02-11T01:46:39Z
+   aks-nodepool1-11785636-vmss000000-auto-hep   2022-11-03T14:53:36Z
+   aks-nodepool1-11785636-vmss000001-auto-hep   2022-11-03T14:53:36Z
+   aks-nodepool1-11785636-vmss000002-auto-hep   2022-11-03T14:53:36Z
    ```
 
 4. Enable automatic host endpoints flow logs.   
