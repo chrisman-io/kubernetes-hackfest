@@ -17,7 +17,7 @@
 2. Uninstall Calico Cloud from AKS cluster.
    a. Download the script.
    ```bash
-   curl -O https://installer.calicocloud.io/manifests/v3.11.1-1/downgrade.sh
+   curl -O https://installer.calicocloud.io/manifests/v3.14.1-11/downgrade.sh
    ``` 
    
    b. Make the script executable.
@@ -39,7 +39,6 @@
 
     ```bash
     az aks delete --name $CLUSTERNAME --resource-group $RGNAME
-    az aks delete --name $OSSCLUSTERNAME --resource-group $RGNAME
     ```
 
 4. Delete the azure resource group. 
