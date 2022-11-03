@@ -212,10 +212,10 @@ If you already have AKS cluster created make sure to verify it by running the In
 
     Output is:
     ```bash
-    Client Version:    v3.24.3
-    Git commit:        d833a9e38
-    Cluster Version:   v3.21.6
-    Cluster Type:      typha,kdd,k8s,operator,aks
+    Client Version:    v3.14.2-calient-3.dev-7-gc1ff355e64f4
+    Release:           Calico Enterprise
+    Git commit:        c1ff355e64
+    Unable to retrieve Cluster Version or Type: resource does not exist: ClusterInformation(default) with error: the server could not find the requested resource (get ClusterInformations.crd.projectcalico.org default)
     ```
       
      ```bash 
