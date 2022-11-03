@@ -23,10 +23,10 @@
 
    ```text
    ### The output is like:
-   NAME                                STATUS   ROLES   AGE     VERSION
-   aks-nodepool1-40984214-vmss000000   Ready    agent   74m     v1.22.4
-   aks-nodepool1-40984214-vmss000001   Ready    agent   74m     v1.22.4
-   aks-nodepool1-40984214-vmss000002   Ready    agent   73m     v1.22.4
+   NAME                                STATUS   ROLES   AGE    VERSION
+   aks-nodepool1-17497551-vmss000000   Ready    agent   115m   v1.23.12
+   aks-nodepool1-17497551-vmss000001   Ready    agent   116m   v1.23.12
+   aks-nodepool1-17497551-vmss000002   Ready    agent   115m   v1.23.12
    ```
 
 
@@ -38,8 +38,8 @@
    ```
 
    b. Deploy LB for Frontend Customer Pod.
-   ```bash
-   cat <<EOF|kubectl apply -f -
+   ```yaml
+   kubectl apply -f - <<-EOF
    apiVersion: v1
    kind: Service
    metadata:
