@@ -221,7 +221,7 @@ If you already have AKS cluster created make sure to verify it by running the In
      ```bash 
      # save and alias calicoctl for future usage.
      alias calicoctl=~/calicoctl
-     echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
+     echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calicloud.env
      ```
 
     b) Linux
