@@ -46,3 +46,15 @@
     ```bash
     az group delete --resource-group $RGNAME
     ```
+
+5. Delete the workshopvars-calicloud.env file.
+
+   ```bash
+   rm ~/workshopvars-calicloud.env
+   ```
+
+6. Delete the calicoctl file.
+
+   ```bash
+   rm ~/calicoctl
+   ```
