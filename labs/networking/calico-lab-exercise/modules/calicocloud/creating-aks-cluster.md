@@ -135,7 +135,7 @@ If you already have AKS cluster created make sure to verify it by running the In
 9.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
-    watch az aks list -o table -g $RGNAME
+    watch az aks list -o table -g $RGNAME --out table
     ```
 
     Wait until the `ProvisioningState` value becames `Succeeded`:
