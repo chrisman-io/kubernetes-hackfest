@@ -34,7 +34,25 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
     tigera.io.detector.port-scan   2022-11-03T13:05:05Z
     ```		
 
-3. Simulate a port scan anomaly by using an NMAP utility.
+3. Enable the AD job for the anomaly detection analysis.
+
+    ```bash
+    sed -i 's,CLUSTERNAME,'"$CLUSTERNAME"',' demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
+    kubectl apply -f demo/90-anomaly-detection/ad-jobs-deployment-managed.yaml
+    ```
+
+4. Confirm the ad job is running before simulating anomaly behaviour
+   ```bash
+   kubectl get pods -n tigera-intrusion-detection
+   ```
+   Output will be like:
+   ```bash
+   NAME                                              READY   STATUS    RESTARTS   AGE
+   ad-jobs-deployment-86684f644c-xjht8               1/1     Running   0          19m
+   intrusion-detection-controller-6f5986ff6f-tg2zq   1/1     Running   0          47m
+   ```
+
+5. Simulate a port scan anomaly by using an NMAP utility.
 
     ```bash
     # simulate port scan
@@ -53,7 +71,7 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
     Nmap done: 1 IP address (1 host up) scanned in 121.25 seconds
     ```
 
-4. After a few minutes we can see the Alert generated in the Web UI
+6. After a few minutes we can see the Alert generated in the Web UI
 
 <img src="../img/anomaly-detection-alert.png" alt="Anomaly Detection Alert" width="100%"/>
 
