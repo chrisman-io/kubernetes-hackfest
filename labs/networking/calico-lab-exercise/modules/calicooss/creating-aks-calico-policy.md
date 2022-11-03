@@ -200,7 +200,7 @@
 	
 14.  Install `calicoctl` CLI for use in later labs. The following guide is based upon the doc from [Install Calicoctl](https://projectcalico.docs.tigera.io/maintenance/clis/calicoctl/install) 
 
-     a) Cloud shell(Linux amd64)
+     a) Cloud shell (Linux amd64)
   
      ```bash    
      # download and configure calicoctl
@@ -211,8 +211,7 @@
      ```bash
      # verify calicoctl is running 
      ./calicoctl version
- 
-     ```
+      ```
  
      Output is:
      ```bash
@@ -228,21 +227,7 @@
      echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
      ```
  
-     b) Linux arm64
- 
-     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
-     ```bash    
-     # download and configure calicoctl
-     curl -L curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-linux-arm64 -o calicoctl
- 
- 
-     chmod +x calicoctl
-     
-     # verify calicoctl is running 
-     calicoctl version
-     ```
- 
-     c) MacOS
+     b) MacOS
      
      >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
      ```bash    
@@ -257,7 +242,7 @@
      Note: If you are faced with `cannot be opened because the developer cannot be verified` error when using `calicoctl` for the first time. go to `Applicaitons` \>  `System Prefences` \> `Security & Privacy` in the `General` tab at the bottom of the window click `Allow anyway`.  
  
  
-     d) Windows - using powershell command to download the calicoctl binary  
+     c) Windows - using powershell command to download the calicoctl binary  
      >Tip: Consider runing powershell as administraor and navigating to a location that’s in your PATH. For example, C:\Windows.
      
      ```pwsh

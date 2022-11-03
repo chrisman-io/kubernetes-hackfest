@@ -209,6 +209,20 @@ If you already have AKS cluster created make sure to verify it by running the In
     ./calicoctl version
     ```
 
+    Output is:
+    ```bash
+    Client Version:    v3.24.3
+    Git commit:        d833a9e38
+    Cluster Version:   v3.21.6
+    Cluster Type:      typha,kdd,k8s,operator,aks
+    ```
+      
+     ```bash 
+     # save and alias calicoctl for future usage.
+     alias calicoctl=~/calicoctl
+     echo "alias calicoctl=~/calicoctl" >> ~/workshopvars-calioss.env
+     ```
+
     b) Linux
     >Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/
 
