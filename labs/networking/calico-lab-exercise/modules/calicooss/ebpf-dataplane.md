@@ -202,7 +202,7 @@
    ```bash
    #check the source IP fromm pod log
    export CUSTOMER_POD=$(kubectl get pods -n yaobank -l app=customer -o name)
-   curl $SVC_HOST
+   curl -m10 -sI $SVC_HOST 2>/dev/null | grep HTTP
    kubectl logs -n yaobank $CUSTOMER_POD
    ```
  
