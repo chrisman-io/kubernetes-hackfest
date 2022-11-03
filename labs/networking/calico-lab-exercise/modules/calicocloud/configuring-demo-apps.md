@@ -31,27 +31,22 @@
 
     Output will be similar as below:
     ```bash
-
-    NAME                                     READY   STATUS    RESTARTS   AGE
-    adservice-7cbc9bd9-jkjhq                 1/1     Running   0          86s
-    cartservice-d7db78c66-4rw8p              1/1     Running   0          87s
-    checkoutservice-784bfc794f-7np5p         1/1     Running   0          87s
-    currencyservice-5898885559-74s5z         1/1     Running   0          86s
-    emailservice-6bd8b47657-s4drk            1/1     Running   0          87s
-    frontend-764c5c755f-8xjcs                1/1     Running   0          87s
-    loadgenerator-84cbcd768c-6tcx5           1/1     Running   0          87s
-    paymentservice-6c676df669-m5j6g          1/1     Running   0          87s
-    productcatalogservice-7fcf4f8cc-nkvnd    1/1     Running   0          87s
-    recommendationservice-79f5f4bbf5-qgqfv   1/1     Running   0          87s
-    redis-cart-74594bd569-l4kt9              1/1     Running   0          86s
-    shippingservice-b5879cdbf-r8xqb          1/1     Running   0          86s
-
-
-    NAME                         READY   STATUS    RESTARTS   AGE
-    centos                       1/1     Running   0          48s
-    dev-nginx-754f647b8b-99fsn   1/1     Running   0          48s
-    dev-nginx-754f647b8b-hlrw8   1/1     Running   0          48s
-    netshoot                     1/1     Running   0          48s
+    default                      adservice-77d5cd745d-59rhv                        1/1     Running   0          90s
+    default                      cartservice-74f56fd4b-pfh6j                       1/1     Running   0          91s
+    default                      checkoutservice-69c8ff664b-dfwjn                  1/1     Running   0          91s
+    default                      currencyservice-77654bbbdd-jzk82                  1/1     Running   0          91s
+    default                      emailservice-54c7c5d9d-bjlh9                      1/1     Running   0          92s
+    default                      frontend-99684f7f8-4sfnx                          1/1     Running   0          91s
+    default                      loadgenerator-555fbdc87d-4nwv6                    1/1     Running   0          91s
+    default                      paymentservice-bbcbdc6b6-d5xlr                    1/1     Running   0          91s
+    default                      productcatalogservice-68765d49b6-mpwlj            1/1     Running   0          91s
+    default                      recommendationservice-5f8c456796-zvk45            1/1     Running   0          91s
+    default                      redis-cart-78746d49dc-4kppj                       1/1     Running   0          91s
+    default                      shippingservice-5bd985c46d-nfqnf                  1/1     Running   0          91s
+    dev                          centos                                            1/1     Running   0          92s
+    dev                          dev-nginx-76c7dcb7b-d7f8d                         1/1     Running   0          92s
+    dev                          dev-nginx-76c7dcb7b-r7667                         1/1     Running   0          92s
+    dev                          netshoot                                          1/1     Running   0          92s
     ```
 
 
