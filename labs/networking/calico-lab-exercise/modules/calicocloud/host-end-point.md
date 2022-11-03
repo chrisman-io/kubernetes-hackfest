@@ -99,7 +99,7 @@
    ```bash
    ssh -i ~/.ssh/id_rsa -t azureuser@$VM_IP NODE_IP1=$NODE_IP1 NODE_IP2=$NODE_IP2 bash -l
    ```
-   
+
    Inside the VM, execute:
    ```bash
    sudo apt-get install netcat
@@ -138,7 +138,7 @@
 
     Test access from vm shell again, the expected result is 30080 Operation timed out
     ```bash
-    ssh -i /.ssh/id_rsa azureuser@$VM_IP
+    ssh -i ~/.ssh/id_rsa -t azureuser@$VM_IP NODE_IP1=$NODE_IP1 NODE_IP2=$NODE_IP2 bash -l
 
     # test access from vm shell to node1 (10.240.0.4), the expected result will be port 30080 (tcp) timed out
     nc -zv $NODE_IP1 30080 -w 10
