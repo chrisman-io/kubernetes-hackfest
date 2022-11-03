@@ -16,8 +16,8 @@
 
     This will add `allow-ms-access` policy to your `security` tier. 
 
-    ![policies board](../img/policies-board.png)
-    
+    ![allow-ms](https://user-images.githubusercontent.com/104035488/199724291-f33694cf-7980-4c24-ab21-f3d3c9b09d92.png)
+
     ![create dns policy](../img/create-dns-policy.png)
 
    
