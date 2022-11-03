@@ -6,11 +6,13 @@
 
 > This workshop uses AKS cluster with Linux containers. To create a Windows Server container on an AKS cluster, consider exploring [AKS documents](https://docs.microsoft.com/en-us/azure/aks/windows-container-cli). This cluster deployment utilizes Azure CLI v2.x from your local terminal or via Azure Cloud Shell. Instructions for installing Azure CLI can be found [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-If you already have AKS cluster created from AKS network policies, make sure the network plugin is "azure", then you can skip this module and go to [module 1](/modules/joining-aks-to-calico-cloud.md)
+If you already have AKS cluster created make sure to verify it running the Instructions number 12 and 13 below. If it comes out ok, then you can skip this module and go to [module 1](/modules/joining-aks-to-calico-cloud.md)
 
 ## Prerequisite Tasks
 
 - Azure Account
+
+## Instructions
 
 1. Login to Azure Portal at http://portal.azure.com.
 
@@ -79,7 +81,7 @@ If you already have AKS cluster created from AKS network policies, make sure the
    az group create -n $RGNAME -l $LOCATION
    ```
     
-3.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
+8.  Create your AKS cluster in the resource group created in step 2 with 3 nodes. We will check for a recent version of kubnernetes before proceeding. You will use the Service Principal information from the prerequisite tasks.
     
     Use Unique CLUSTERNAME
     
@@ -116,7 +118,6 @@ If you already have AKS cluster created from AKS network policies, make sure the
     K8SVERSION=1.23.12
     echo export K8SVERSION=1.23.12 >> ~/workshopvars-calicloud.env
     ```
-    ```
     
     > The below command can take 10-20 minutes to run as it is creating the AKS cluster. Please be PATIENT and grab a coffee/tea/kombucha...
     
@@ -131,7 +132,7 @@ If you already have AKS cluster created from AKS network policies, make sure the
     --generate-ssh-keys
     ```
     
-4.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
+9.  Verify your cluster status. The `ProvisioningState` should be `Succeeded`
     
     ```bash
     watch az aks list -o table -g $RGNAME
@@ -146,7 +147,7 @@ If you already have AKS cluster created from AKS network policies, make sure the
     ```
     
     
-5.  Get the Kubernetes config files for your new AKS cluster
+10.  Get the Kubernetes config files for your new AKS cluster
     
     ```bash
     az aks get-credentials -n $CLUSTERNAME -g $RGNAME
