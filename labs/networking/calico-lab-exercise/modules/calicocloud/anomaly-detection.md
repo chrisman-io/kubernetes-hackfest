@@ -57,7 +57,7 @@ Calico offers [Anomaly Detection](https://docs.tigera.io/threat/security-anomali
     ```bash
     # simulate port scan
     POD_IP=$(kubectl -n dev get po --selector app=nginx -o jsonpath='{.items[0].status.podIP}')
-    kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-600 $POD_IP
+    kubectl -n dev exec netshoot -- nmap -Pn -r -p 1-80 $POD_IP
     ```
 
     ```text
