@@ -152,24 +152,24 @@ If you already have AKS cluster created make sure to verify it by running the In
     az aks get-credentials -n $CLUSTERNAME -g $RGNAME
     ```
     
-11.  Verify you have API access to your new AKS cluster
+11. Verify you have API access to your new AKS cluster
+   
+    > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready  when the output is similar to the following:
     
-     > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready  when the output is similar to the following:
-     
-	 ```bash
-	 kubectl get nodes
-	 ```
-	 ```
-	 NAME                                STATUS   ROLES   AGE    VERSION
-	 aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.22.4
-	 aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.22.4
-	 aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.22.4
-	 ```
+	```bash
+	kubectl get nodes
+	```
+	```
+	NAME                                STATUS   ROLES   AGE    VERSION
+    aks-nodepool1-11785636-vmss000000   Ready    agent   20m   v1.23.12
+    aks-nodepool1-11785636-vmss000001   Ready    agent   20m   v1.23.12
+    aks-nodepool1-11785636-vmss000002   Ready    agent   20m   v1.23.12
+	```
  
-	 To see more details about your cluster:
-	 ```bash
-	 kubectl cluster-info
-	 ```
+	To see more details about your cluster:
+	```bash
+	kubectl cluster-info
+	```
 12. Verify the settings
    
     ```bash
