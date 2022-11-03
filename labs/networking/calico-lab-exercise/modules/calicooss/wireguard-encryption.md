@@ -38,9 +38,7 @@
     ```bash
     ##NODE-NAME will be aks-nodepool1-40984214-vmss0000000 for example.
     NODE_NAME=$(kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="Hostname")].address}'| awk '{print $1;}')
-    sleep 10
     calicoctl --allow-version-mismatch get node $NODE_NAME -o yaml | grep wireguard
-
     ```
 
     Output will be like:
