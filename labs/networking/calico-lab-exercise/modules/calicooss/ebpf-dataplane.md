@@ -140,7 +140,7 @@
 
    ```bash
    #Curl the svc ip from your cloud shell/local shell or open in your browser to generate logs.
-   curl -m3 $SVC_HOST
+   curl -m10 -sI $SVC_HOST 2>/dev/null | grep HTTP
    ```
     
    ```bash
