@@ -32,9 +32,9 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
    ![choose_aks](https://user-images.githubusercontent.com/104035488/199702972-36177641-0143-4669-9873-8272dbafafc0.png)
    
    Run installation script in your aks cluster, script should look similar to this
-   
-   ![install-script](../img/script.png)
-   
+ 
+   ![connect](https://user-images.githubusercontent.com/104035488/199704524-05ef0eb4-1a1b-4dc7-8df1-85fb5e172f83.png)
+
    > Output should look similar to:
    ```bash
    namespace/calico-cloud created
