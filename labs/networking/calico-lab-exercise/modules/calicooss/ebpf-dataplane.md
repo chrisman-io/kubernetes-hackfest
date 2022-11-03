@@ -151,8 +151,8 @@
  
    > Output should be similar as below, the public IP will show up as source IP.
    ```text
-   40.114.1.180 - - [26/Oct/2021 19:54:13] "GET / HTTP/1.1" 200 -
-   173.178.61.132 - - [26/Oct/2021 19:55:37] "GET / HTTP/1.1" 200 -
+   20.124.135.197 - - [03/Nov/2022 00:54:52] "HEAD / HTTP/1.1" 200 -
+   20.124.135.197 - - [03/Nov/2022 00:54:59] "HEAD / HTTP/1.1" 200 -
    ```
 
 
