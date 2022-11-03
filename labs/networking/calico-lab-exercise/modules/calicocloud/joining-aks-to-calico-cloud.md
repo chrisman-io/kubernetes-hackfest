@@ -27,6 +27,7 @@ IMPORTANT: In order to complete this module, you must have [Calico Cloud trial a
 
     choose AKS and click next
       ![choose-aks](../img/choose-aks.png)
+      ![choose_aks](https://user-images.githubusercontent.com/104035488/199702972-36177641-0143-4669-9873-8272dbafafc0.png)
 
     Run installation script in your aks cluster, script should look similar to this
 
