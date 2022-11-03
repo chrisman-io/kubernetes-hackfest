@@ -138,7 +138,7 @@ If you already have AKS cluster created make sure to verify it by running the In
     watch az aks list -o table -g $RGNAME --out table
     ```
 
-    Wait until the `ProvisioningState` value becames `Succeeded`:
+    Wait until the `ProvisioningState` value to became `Succeeded`:
     ```bash
     Name           Location    ResourceGroup      KubernetesVersion    ProvisioningState    Fqdn
     -------------  ----------  -----------------  -------------------  -------------------  -----------------------------------------------------------------

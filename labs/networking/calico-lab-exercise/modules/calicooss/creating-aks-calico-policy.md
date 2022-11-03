@@ -139,7 +139,7 @@
     watch az aks list -g $RGNAME --out table
     ```
 
-    Wait until the `ProvisioningState` value becames `Succeeded`:
+    Wait until the `ProvisioningState` value to became `Succeeded`:
 
     ```bash
     Name                Location    ResourceGroup      KubernetesVersion    CurrentKubernetesVersion    ProvisioningState    Fqdn
