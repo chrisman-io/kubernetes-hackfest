@@ -51,22 +51,12 @@
     l7-log-collector-jxzjq                     2/2     Running   0          15m
     ```
 
-4.  Annotate the Boutiqueshop Services
+4.  Annotate the frontend services for the Online Boutique application.
 
     ```bash
-    kubectl annotate svc -n default adservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default cartservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default checkoutservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default currencyservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default emailservice projectcalico.org/l7-logging=true
     kubectl annotate svc -n default frontend projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default paymentservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default productcatalogservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default recommendationservice projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default redis-cart projectcalico.org/l7-logging=true
-    kubectl annotate svc -n default shippingservice projectcalico.org/l7-logging=true
+    kubectl annotate svc -n default frontend-external projectcalico.org/l7-logging=true
     ```
- 
    
 5. *[Optional]* restart the pods of `boutiqueshop` if you want to see l7 logs right away.    
     >L7 flow logs will require a few minutes to generate, you can also restart pods which will lead l7 logs pop up quicker.  
