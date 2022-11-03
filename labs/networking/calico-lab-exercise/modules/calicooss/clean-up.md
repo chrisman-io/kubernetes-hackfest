@@ -15,7 +15,13 @@
 3. Delete the workshopvars-calioss.env file.
 
    ```bash
-   rm workshopvars-calioss.env
+   rm ~/workshopvars-calioss.env
+   ```
+
+4. Delete the calicoctl file.
+
+   ```bash
+   rm ~/calicoctl
    ```
 
 [Next -> Chapter 2 - Module 0](../calicocloud/creating-aks-cluster.md)
