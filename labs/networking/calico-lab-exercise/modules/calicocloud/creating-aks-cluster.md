@@ -202,9 +202,10 @@ If you already have AKS cluster created make sure to verify it by running the In
     ```bash
     # download and configure calicoctl
     curl -o calicoctl -O -L https://downloads.tigera.io/ee/binaries/v3.14.2/calicoctl
-
     chmod +x calicoctl
-    
+    ```
+
+    ```bash    
     # verify calicoctl is running 
     ./calicoctl version
     ```
