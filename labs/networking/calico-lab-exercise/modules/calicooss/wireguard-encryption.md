@@ -67,6 +67,11 @@
    wireguard.cali: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1340
    ```
 
+   Exit from the pod node-debugger
+   ```bash
+   exit
+   ```
+
 4. Disabling wireguard
 
     ```bash
@@ -76,7 +81,7 @@
     ```bash
     Successfully patched 1 'FelixConfiguration' resource
     ```
-    
+
     Verify that the node has not the wireguard annotation anymore.
 
     ```bash
