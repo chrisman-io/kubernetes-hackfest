@@ -104,7 +104,7 @@
    Verify all pods restart successfully
 
    ```bash
-   kubectl get pods -n calico-system 
+   watch kubectl get pods -n calico-system 
    ```
 
 4. Replace kube-proxy 
