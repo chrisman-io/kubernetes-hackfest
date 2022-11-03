@@ -152,26 +152,50 @@ If you already have AKS cluster created make sure to verify it by running the In
     az aks get-credentials -n $CLUSTERNAME -g $RGNAME
     ```
     
-6.  Verify you have API access to your new AKS cluster
+11.  Verify you have API access to your new AKS cluster
     
-    > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready when the output is similar to the following:
-    
-	```bash
-	kubectl get nodes
-	```
-	```
-	NAME                                STATUS   ROLES   AGE    VERSION
-	aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.22.4
-	aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.22.4
-	aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.22.4
-	```
+     > Note: It can take 5 minutes for your nodes to appear and be in READY state. You can run `watch kubectl get nodes` to monitor status. Otherwise, the cluster is ready  when the output is similar to the following:
+     
+	 ```bash
+	 kubectl get nodes
+	 ```
+	 ```
+	 NAME                                STATUS   ROLES   AGE    VERSION
+	 aks-nodepool1-29374799-vmss000000   Ready    agent   118s   v1.22.4
+	 aks-nodepool1-29374799-vmss000001   Ready    agent   2m3s   v1.22.4
+	 aks-nodepool1-29374799-vmss000002   Ready    agent   2m     v1.22.4
+	 ```
+ 
+	 To see more details about your cluster:
+	 ```bash
+	 kubectl cluster-info
+	 ```
+12. Verify the settings
+   
+    ```bash
+    az aks show --resource-group $RGNAME --name $OSSCLUSTERNAME --query 'networkProfile'
+    ```
 
-	To see more details about your cluster:
-	```bash
-	kubectl cluster-info
-	```
-	
-7. *[Optional]*  Install `calicoctl` CLI for use in later labs
+    > You should see "networkPlugin": "azure" and it will not show the "networkPolicy" param.
+
+13. Verify the transparent mode by running the following command in one node
+
+    ```bash
+    az vmss run-command invoke \
+      -g $(az vmss list --output table | grep -i $RGNAME | awk '{print $2}') \
+      -n $(az vmss list --output table | grep -i $RGNAME | awk '{print $1}') \
+     --scripts "cat /etc/cni/net.d/*" \
+     --command-id RunShellScript \
+     --instance-id 0 \
+     --query 'value[0].message' \
+     --output tsv
+    ```
+    
+    > output should contain "mode": "transparent"
+ 
+
+
+14. *[Optional]*  Install `calicoctl` CLI for use in later labs
 
     a) CloudShell
 
