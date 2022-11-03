@@ -1,4 +1,4 @@
-# Workshop cleanup
+# Chapter one: Calico OSS cleanup
 
 1. Delete AKS cluster.
 
@@ -18,4 +18,4 @@
    rm workshopvars-calioss.env
    ```
 
-[Next -> Chapter 2-Module 0](../calicocloud/creating-aks-cluster.md)
+[Next -> Chapter 2 - Module 0](../calicocloud/creating-aks-cluster.md)

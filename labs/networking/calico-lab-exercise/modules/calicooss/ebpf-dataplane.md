@@ -220,6 +220,8 @@ Congratulations! You've completed the labs for Calico Open Source on AKS. Calico
 
 >**Note:** The Calico Cloud labs will start by creating a new AKS Cluster with the proper configuration to enable Calico Cloud.
 
-[Delete your AKS cluster for this lab](../calicooss/clean-up.md)
+
+[Chater one: Calico OSS clean-up](../calicooss/clean-up.md)
+
 
 [Next -> Chapter 2-Module 0](../calicocloud/creating-aks-cluster.md)
