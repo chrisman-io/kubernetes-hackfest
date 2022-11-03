@@ -141,10 +141,19 @@
    The output will be like:
    ```bash
    ##nc command output
-   10.240.0.115 (10.240.0.115:80) open
+   10.224.0.121 (10.224.0.121:80) open
  
    ##powershell command output 
    Invoke-WebRequest : The operation has timed out.
+   At line:1 char:1
+   + Invoke-WebRequest -Uri http://10.224.0.65 -UseBasicParsing -TimeoutSe ...
+   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:Htt 
+      pWebRequest) [Invoke-WebRequest], WebException
+       + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShe 
+      ll.Commands.InvokeWebRequestCommand
+    
+   command terminated with exit code 1
 
 
 [Next -> Module 4](../calicooss/wireguard-encryption.md)
