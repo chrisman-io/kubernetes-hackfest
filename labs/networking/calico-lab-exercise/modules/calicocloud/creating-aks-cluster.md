@@ -173,7 +173,7 @@ If you already have AKS cluster created make sure to verify it by running the In
 12. Verify the settings
    
     ```bash
-    az aks show --resource-group $RGNAME --name $OSSCLUSTERNAME --query 'networkProfile'
+    az aks show --resource-group $RGNAME --name $CLUSTERNAME --query 'networkProfile'
     ```
 
     > You should see "networkPlugin": "azure" and it will not show the "networkPolicy" param.
