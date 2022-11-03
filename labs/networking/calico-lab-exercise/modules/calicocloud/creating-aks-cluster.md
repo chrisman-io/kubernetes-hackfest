@@ -87,11 +87,11 @@ If you already have AKS cluster created make sure to verify it by running the In
     
     ```bash
     # Set AKS Cluster Name
-    CLUSTERNAME=aks${UNIQUE_SUFFIX}
+    CLUSTERNAME=aks-${UNIQUE_SUFFIX}
     # Look at AKS Cluster Name for Future Reference
     echo $CLUSTERNAME
     # Persist for Later Sessions in Case of Timeout
-    echo export CLUSTERNAME=aks${UNIQUE_SUFFIX} >> ~/workshopvars-calicloud.env
+    echo export CLUSTERNAME=aks-${UNIQUE_SUFFIX} >> ~/workshopvars-calicloud.env
     ```
     
     Get available kubernetes versions for the region. You will likely see more recent versions in your lab.
